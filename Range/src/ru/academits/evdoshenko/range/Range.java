@@ -1,29 +1,6 @@
 package ru.academits.evdoshenko.range;
 
-public class Range {
-    private double from;
-    private double to;
-
-    public Range(double from, double to) {
-        this.from = from;
-        this.to = to;
-    }
-
-    public double getFrom() {
-        return from;
-    }
-
-    public void setFrom(double from) {
-        this.from = from;
-    }
-
-    public double getTo() {
-        return to;
-    }
-
-    public void setTo(double to) {
-        this.to = to;
-    }
+public record Range(double from, double to) {
 
     public double getLength() {
         return to - from;
@@ -33,45 +10,51 @@ public class Range {
         return number >= from && number <= to;
     }
 
-    public Range getIntersection(double beginning1, double ending1, double beginning2, double ending2) {
-        if (beginning1 == beginning2 && ending1 == ending2) {
-            return new Range(beginning2, ending2);
-        }
-
-        if (ending1 <= beginning2 || ending2 <= beginning1) {
+    public Range[] getIntersection(Range range) {
+        if (this.to <= range.from || range.to <= this.from) {
             return null;
         }
 
-        return new Range(Math.max(beginning1, beginning2), Math.min(ending1, ending2));
+        return new Range[]{new Range(Math.max(this.from, range.from), Math.min(this.to, range.to))};
     }
 
-    public Range[] getUnion(double beginning1, double ending1, double beginning2, double ending2) {
-        if (beginning1 < beginning2 && ending1 >= beginning2 || beginning2 < beginning1 && ending2 >= beginning1) {
-            return new Range[]{new Range(Math.min(beginning1, beginning2), Math.max(ending1, ending2))};
+    public Range[] getUnion(Range range) {
+        if ((this.from <= range.from && this.to >= range.from) || (range.from <= this.from && range.to >= this.from)) {
+            return new Range[]{new Range(
+                    Math.min(this.from, range.from),
+                    Math.max(this.to, range.to))};
         }
 
-        return new Range[]{new Range(beginning1, ending1), new Range(beginning2, ending2)};
+        return new Range[]{new Range(this.from, this.to), new Range(range.from, range.to)};
     }
 
-    public Range[] getDifference(double beginning1, double ending1, double beginning2, double ending2) {
-        if (beginning1 == beginning2 && ending1 == ending2) {
+    public Range[] getDifference(Range range) {
+        if (this.to <= range.from || range.to <= this.from) {
             return new Range[]{};
         }
 
-        if (ending1 == beginning2 && beginning1 < beginning2 || ending2 == beginning1 && beginning2 < beginning1) {
-            return null;
+        if (this.from == range.from) {
+            return new Range[]{new Range(
+                    Math.min(this.to, range.to),
+                    Math.max(this.to, range.to))};
         }
 
-        if (beginning1 == beginning2) {
-            return new Range[]{new Range(beginning1, Math.max(ending1, ending2) - Math.min(ending1, ending2))};
+        if (this.to == range.to) {
+            return new Range[]{new Range(
+                    Math.min(this.from, range.from),
+                    Math.max(this.from, range.from))};
         }
 
-        if (ending1 == ending2) {
-            return new Range[]{new Range(beginning1, Math.max(beginning1, beginning2) -
-                    Math.min(beginning1, beginning2))};
-        }
+        return new Range[]{new Range(
+                Math.min(this.from, range.from),
+                Math.max(this.from, range.from)),
+                new Range(
+                        Math.min(this.to, range.to),
+                        Math.max(this.to, range.to))};
+    }
 
-        return new Range[]{new Range(Math.min(beginning1, beginning2), Math.max(beginning1, beginning2)),
-                new Range(Math.min(ending1, ending2), Math.max(ending1, ending2))};
+    @Override
+    public String toString() {
+        return String.format("(%.3f; %.3f)", this.from, this.to);
     }
 }
