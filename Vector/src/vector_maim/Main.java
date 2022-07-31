@@ -1,6 +1,5 @@
 package vector_maim;
 
-
 import java.util.Scanner;
 
 import vector.Vector;
