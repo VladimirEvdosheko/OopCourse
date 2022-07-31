@@ -2,7 +2,7 @@ package vector_maim;
 
 import java.util.Scanner;
 
-import vector.Vector;
+import vector_classes.Vector;
 
 public class Main {
     public static void main(String[] args) {

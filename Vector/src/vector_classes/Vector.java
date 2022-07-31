@@ -1,4 +1,4 @@
-package vector;
+package vector_classes;
 
 public class Vector {
     private double[] components;
