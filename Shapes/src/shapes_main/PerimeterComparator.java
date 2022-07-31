@@ -1,12 +1,12 @@
 package shapes_main;
 
-import shapes.Shape;
+import shapes_classes.Shape;
 
 import java.util.Comparator;
 
-public class PerimeterComparator  implements Comparator<Shape> {
+public class PerimeterComparator implements Comparator<Shape> {
     @Override
-    public int compare(Shape object1, Shape object2) {
-        return (int) (object2.getPerimeter() - object1.getPerimeter());
+    public int compare(Shape shape1, Shape shape2) {
+        return Double.compare(shape1.getPerimeter(), shape2.getPerimeter());
     }
 }

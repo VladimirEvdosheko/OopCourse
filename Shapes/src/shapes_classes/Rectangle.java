@@ -1,4 +1,4 @@
-package shapes;
+package shapes_classes;
 
 public class Rectangle implements Shape {
     private final double width;
@@ -11,43 +11,43 @@ public class Rectangle implements Shape {
 
     @Override
     public double getWidth() {
-        return this.width;
+        return width;
     }
 
     @Override
     public double getHeight() {
-        return this.height;
+        return height;
     }
 
     @Override
     public double getArea() {
-        return this.height * this.width;
+        return height * width;
     }
 
     @Override
     public double getPerimeter() {
-        return 2 * (this.width + this.height);
+        return 2 * (width + height);
     }
 
     @Override
     public String toString() {
         return String.format("Shape name - Rectangle. Parameters: Width =%.3f; Height =%.3f; " +
-                "Area = %.3f; Perimeter = %.3f.", this.getWidth(), this.getHeight(), this.getArea(), this.getPerimeter());
+                "Area = %.3f; Perimeter = %.3f.", getWidth(), getHeight(), getArea(), getPerimeter());
     }
 
     @Override
-    public boolean equals(Shape shape) {
-        if (this == shape) {
+    public boolean equals(Object object) {
+        if (this == object) {
             return true;
         }
 
-        if (shape == null || getClass() != shape.getClass()) {
+        if (object == null || getClass() != object.getClass()) {
             return false;
         }
 
-        Rectangle rectangle = (Rectangle) shape;
+        Rectangle rectangle = (Rectangle) object;
 
-        return this.getArea() == rectangle.getArea() && this.width == rectangle.width;
+        return this.height == rectangle.height && this.width == rectangle.width;
     }
 
     @Override

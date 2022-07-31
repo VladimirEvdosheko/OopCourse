@@ -1,10 +1,11 @@
-package shapes;
+package shapes_classes;
 
 public interface Shape {
     double getWidth();
-    double getHeight();
-    double getArea();
-    double getPerimeter();
 
-    boolean equals(Shape shape);
+    double getHeight();
+
+    double getArea();
+
+    double getPerimeter();
 }
