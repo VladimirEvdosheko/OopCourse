@@ -33,7 +33,7 @@ public class Circle implements Shape {
 
     @Override
     public String toString() {
-        return String.format("Shape name - Circle. Parameters: Radius: %f; Area = %.3f; Perimeter = %.3f.",
+        return String.format("Shape name - Circle. Parameters: Radius: %.3f; Area = %.3f; Perimeter = %.3f.",
                 getRadius(), getArea(), getPerimeter());
     }
 

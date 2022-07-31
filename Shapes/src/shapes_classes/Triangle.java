@@ -69,8 +69,9 @@ public class Triangle implements Shape {
 
     @Override
     public String toString() {
-        return String.format("Shape name - Triangle. Coordinates: (%f; %f), (%f; %f), (%f; %f); Area = %.3f; " +
-                "Perimeter = %.3f.", getX1(), getY1(), getX2(), getY2(), getX3(), getY3(), getArea(), getPerimeter());
+        return String.format("Shape name - Triangle. Coordinates: (%.3f; %.3f), (%.3f; %.3f), (%.3f; %.3f); " +
+                        "Area = %.3f; Perimeter = %.3f.",
+                getX1(), getY1(), getX2(), getY2(), getX3(), getY3(), getArea(), getPerimeter());
     }
 
     @Override
