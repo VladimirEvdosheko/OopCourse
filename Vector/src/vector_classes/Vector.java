@@ -49,6 +49,7 @@ public class Vector {
         if (this.components.length == vector.components.length) {
             return;
         }
+        
         if (this.components.length < vector.components.length) {
             double[] temp = this.components;
 

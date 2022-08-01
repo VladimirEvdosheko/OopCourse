@@ -1,4 +1,4 @@
-package vector_maim;
+package vector_main;
 
 import java.util.Scanner;
 
