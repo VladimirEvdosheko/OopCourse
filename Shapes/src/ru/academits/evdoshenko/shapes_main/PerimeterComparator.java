@@ -1,6 +1,6 @@
-package shapes_main;
+package ru.academits.evdoshenko.shapes_main;
 
-import shapes_classes.Shape;
+import ru.academits.evdoshenko.shapes.Shape;
 
 import java.util.Comparator;
 

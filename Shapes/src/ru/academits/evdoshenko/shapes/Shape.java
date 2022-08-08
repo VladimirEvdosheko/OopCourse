@@ -1,4 +1,4 @@
-package shapes_classes;
+package ru.academits.evdoshenko.shapes;
 
 public interface Shape {
     double getWidth();

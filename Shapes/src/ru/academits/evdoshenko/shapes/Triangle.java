@@ -1,4 +1,4 @@
-package shapes_classes;
+package ru.academits.evdoshenko.shapes;
 
 public class Triangle implements Shape {
     private final double x1;
@@ -60,10 +60,10 @@ public class Triangle implements Shape {
 
     @Override
     public double getPerimeter() {
-        return getSideLength(x2, x1, y2, y1) + getSideLength(x3, x2, y3, y2) + getSideLength(x3, x1, y3, y1);
+        return getSideLength(x2, y2, x1, y1) + getSideLength(x3, y3, x2, y2) + getSideLength(x3, y3, x1, y1);
     }
 
-    public static double getSideLength(double x1, double x2, double y1, double y2) {
+    private static double getSideLength(double x1, double y1, double x2, double y2) {
         return Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
     }
 
@@ -71,7 +71,7 @@ public class Triangle implements Shape {
     public String toString() {
         return String.format("Shape name - Triangle. Coordinates: (%.3f; %.3f), (%.3f; %.3f), (%.3f; %.3f); " +
                         "Area = %.3f; Perimeter = %.3f.",
-                getX1(), getY1(), getX2(), getY2(), getX3(), getY3(), getArea(), getPerimeter());
+                x1, y1, x2, y2, x3, x3, getArea(), getPerimeter());
     }
 
     @Override
@@ -86,8 +86,8 @@ public class Triangle implements Shape {
 
         Triangle triangle = (Triangle) object;
 
-        return this.x1 == triangle.x1 && this.x2 == triangle.x2 && this.x3 == triangle.x3 &&
-                this.y1 == triangle.y1 && this.y2 == triangle.y2 && this.y3 == triangle.y3;
+        return x1 == triangle.x1 && x2 == triangle.x2 && x3 == triangle.x3 &&
+                y1 == triangle.y1 && y2 == triangle.y2 && y3 == triangle.y3;
     }
 
     @Override

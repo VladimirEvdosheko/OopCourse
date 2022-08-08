@@ -52,19 +52,22 @@ public class Main {
         System.out.print("The union result ");
         print(unionResult);
 
+        System.out.println();
+
         System.out.print("The difference result ");
         print(differenceResult);
     }
 
     public static void print(Range[] range) {
         if (range.length == 0) {
-            System.out.println("is range []");
+            System.out.println("[];");
         } else if (range.length == 1) {
-            System.out.printf("is range: [%s]%n",
+            System.out.printf("[%s];",
                     range[0]);
         } else {
-            System.out.printf("are ranges: [%s, %s]%n",
-                    range[0], range[1]);
+            for (int i = 0; i < range.length - 1; i++) {
+                System.out.printf("[%s, %s]; ", range[i], range[i + 1]);
+            }
         }
     }
 }

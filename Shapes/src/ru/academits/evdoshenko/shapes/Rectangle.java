@@ -1,39 +1,37 @@
-package shapes_classes;
+package ru.academits.evdoshenko.shapes;
 
-public class Square implements Shape {
-    private final double sideLength;
+public class Rectangle implements Shape {
+    private final double width;
+    private final double height;
 
-    public Square(double sideLength) {
-        this.sideLength = sideLength;
-    }
-
-    public double getSideLength() {
-        return sideLength;
+    public Rectangle(double width, double height) {
+        this.width = width;
+        this.height = height;
     }
 
     @Override
     public double getWidth() {
-        return sideLength;
+        return width;
     }
 
     @Override
     public double getHeight() {
-        return sideLength;
+        return height;
     }
 
     @Override
     public double getArea() {
-        return sideLength * sideLength;
+        return height * width;
     }
 
     @Override
     public double getPerimeter() {
-        return 4 * sideLength;
+        return 2 * (width + height);
     }
 
     @Override
     public String toString() {
-        return String.format("Shape name - Circle. Parameters: Width =%.3f; Height =%.3f; " +
+        return String.format("Shape name - Rectangle. Parameters: Width = %.3f; Height = %.3f; " +
                 "Area = %.3f; Perimeter = %.3f.", getWidth(), getHeight(), getArea(), getPerimeter());
     }
 
@@ -47,9 +45,9 @@ public class Square implements Shape {
             return false;
         }
 
-        Square square = (Square) object;
+        Rectangle rectangle = (Rectangle) object;
 
-        return this.sideLength == square.sideLength;
+        return height == rectangle.height && width == rectangle.width;
     }
 
     @Override
@@ -57,7 +55,8 @@ public class Square implements Shape {
         final int prime = 37;
 
         int hash = 1;
-        hash = prime * hash + Double.hashCode(sideLength);
+        hash = prime * hash + Double.hashCode(width);
+        hash = prime * hash + Double.hashCode(height);
 
         return hash;
     }

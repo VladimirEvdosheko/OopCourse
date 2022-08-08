@@ -1,4 +1,4 @@
-package shapes_classes;
+package ru.academits.evdoshenko.shapes;
 
 public class Circle implements Shape {
     private final double radius;
@@ -34,7 +34,7 @@ public class Circle implements Shape {
     @Override
     public String toString() {
         return String.format("Shape name - Circle. Parameters: Radius: %.3f; Area = %.3f; Perimeter = %.3f.",
-                getRadius(), getArea(), getPerimeter());
+                radius, getArea(), getPerimeter());
     }
 
     @Override
@@ -43,13 +43,13 @@ public class Circle implements Shape {
             return true;
         }
 
-        if (this.getClass() != object.getClass()) {
+        if (getClass() != object.getClass()) {
             return false;
         }
 
         Circle circle = (Circle) object;
 
-        return this.radius == circle.radius;
+        return radius == circle.radius;
     }
 
     @Override
