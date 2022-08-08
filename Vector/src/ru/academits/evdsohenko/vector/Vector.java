@@ -38,25 +38,15 @@ public class Vector {
     }
 
     public void extend(Vector vector) {
-        if (components.length == vector.components.length) {
-            return;
-        }
-
         if (components.length < vector.components.length) {
-            double[] temp = components;
-
-            components = new double[vector.components.length];
-
-            for (int i = 0; i < temp.length; i++) {
-                components[i] += temp[i];
-            }
+            components = Arrays.copyOf(components, vector.components.length);
         }
     }
 
     public Vector getSum(Vector vector) {
-        extend(vector);
+        this.extend(vector);
 
-        for (int i = 0; i < components.length; i++) {
+        for (int i = 0; i < vector.components.length; i++) {
             components[i] += vector.components[i];
         }
 
@@ -64,7 +54,7 @@ public class Vector {
     }
 
     public Vector getSubtraction(Vector vector) {
-        extend(vector);
+        this.extend(vector);
 
         for (int i = 0; i < vector.components.length; i++) {
             components[i] -= vector.components[i];
@@ -152,14 +142,12 @@ public class Vector {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder("{");
-
-        double[] components = this.components;
-
         for (double component : components) {
             stringBuilder.append(String.format("%.3f; ", component));
         }
 
-        stringBuilder.append(String.format("%f}", components[components.length - 1]));
+        stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length());
+        stringBuilder.append("}");
 
         return stringBuilder.toString();
     }

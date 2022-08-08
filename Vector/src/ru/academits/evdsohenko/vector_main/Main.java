@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        double[] array1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        double[] array1 = {1, 1, 1, 1};
         double[] array2 = {1, 2, 3, 4};
 
         Vector vector1 = new Vector(array1);
@@ -36,15 +36,12 @@ public class Main {
         Vector subtractionResult = Vector.getSubtraction(vector1, vector2);
         System.out.printf("The result of subtract of two vectors is vector: %s%n", subtractionResult);
 
-        Vector vector3 = new Vector(10);
-        Vector vector4 = new Vector(4, array1);
-
-        Vector additionResult = Vector.getSum(vector4, vector3);
+        Vector additionResult = Vector.getSum(vector1, vector2);
         System.out.printf("The result of addition of two vectors is vector: %s%n", additionResult);
 
-        double multiplyResult = Vector.getScalarMultiplyResult(vector4, vector3);
+        double multiplyResult = Vector.getScalarMultiplyResult(vector1, vector2);
         System.out.printf("Vectors multiply result = %f%n", multiplyResult);
 
-        System.out.printf("Subtract result of two vectors is %s%n", vector4.getSubtraction(vector3));
+        System.out.printf("Subtract result of two vectors is %s%n", vector1.getSubtraction(vector2));
     }
 }
