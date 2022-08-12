@@ -56,7 +56,6 @@ public class Main {
 
         System.out.print("The difference result ");
         print(differenceResult);
-
     }
 
     public static void print(Range[] ranges) {
