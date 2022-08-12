@@ -56,18 +56,26 @@ public class Main {
 
         System.out.print("The difference result ");
         print(differenceResult);
+
     }
 
-    public static void print(Range[] range) {
-        if (range.length == 0) {
-            System.out.println("[];");
-        } else if (range.length == 1) {
+    public static void print(Range[] ranges) {
+        if (ranges.length == 0) {
+            System.out.print("[];");
+        } else if (ranges.length == 1) {
             System.out.printf("[%s];",
-                    range[0]);
+                    ranges[0]);
         } else {
-            for (int i = 0; i < range.length - 1; i++) {
-                System.out.printf("[%s, %s]; ", range[i], range[i + 1]);
+            StringBuilder stringBuilder = new StringBuilder("[");
+
+            for (Range range : ranges) {
+                stringBuilder.append(range.toString()).append(", ");
             }
+
+            stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length());
+            stringBuilder.append("]");
+
+            System.out.print(stringBuilder);
         }
     }
 }
