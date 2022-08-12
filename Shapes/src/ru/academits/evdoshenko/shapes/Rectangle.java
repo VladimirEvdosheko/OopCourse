@@ -32,7 +32,7 @@ public class Rectangle implements Shape {
     @Override
     public String toString() {
         return String.format("Shape name - Rectangle. Parameters: Width = %.3f; Height = %.3f; " +
-                "Area = %.3f; Perimeter = %.3f.", getWidth(), getHeight(), getArea(), getPerimeter());
+                "Area = %.3f; Perimeter = %.3f.", width, height, getArea(), getPerimeter());
     }
 
     @Override

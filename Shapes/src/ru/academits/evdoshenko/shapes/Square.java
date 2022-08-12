@@ -34,7 +34,7 @@ public class Square implements Shape {
     @Override
     public String toString() {
         return String.format("Shape name - Circle. Parameters: Width = %.3f; Height = %.3f; " +
-                "Area = %.3f; Perimeter = %.3f.", getWidth(), getHeight(), getArea(), getPerimeter());
+                "Area = %.3f; Perimeter = %.3f.", sideLength, sideLength, getArea(), getPerimeter());
     }
 
     @Override
