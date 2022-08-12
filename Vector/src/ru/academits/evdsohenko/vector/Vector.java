@@ -142,6 +142,7 @@ public class Vector {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder("{");
+
         for (double component : components) {
             stringBuilder.append(String.format("%.3f; ", component));
         }

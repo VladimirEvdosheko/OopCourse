@@ -13,6 +13,7 @@ public class Main {
 
         Vector vector1 = new Vector(array1);
         Vector vector2 = new Vector(array2);
+        Vector vector3 = new Vector(4, array1);
 
         System.out.printf("The first vector size is %d%n", vector1.getSize());
 
@@ -36,12 +37,12 @@ public class Main {
         Vector subtractionResult = Vector.getSubtraction(vector1, vector2);
         System.out.printf("The result of subtract of two vectors is vector: %s%n", subtractionResult);
 
-        Vector additionResult = Vector.getSum(vector1, vector2);
+        Vector additionResult = Vector.getSum(vector1, vector3);
         System.out.printf("The result of addition of two vectors is vector: %s%n", additionResult);
 
-        double multiplyResult = Vector.getScalarMultiplyResult(vector1, vector2);
+        double multiplyResult = Vector.getScalarMultiplyResult(vector1, vector3);
         System.out.printf("Vectors multiply result = %f%n", multiplyResult);
 
-        System.out.printf("Subtract result of two vectors is %s%n", vector1.getSubtraction(vector2));
+        System.out.printf("Subtract result of two vectors is %s%n", vector1.getSubtraction(vector3));
     }
 }
