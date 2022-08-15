@@ -1,4 +1,4 @@
-package academits.evdoshenko;
+package academits.evdoshenko.Main;
 
 import java.io.*;
 import java.util.Arrays;
