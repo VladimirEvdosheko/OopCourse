@@ -7,14 +7,14 @@ public class Vector {
 
     public Vector(int vectorSize) {
         if (vectorSize <= 0) {
-            throw new IllegalArgumentException("The vector size must be > 0. Current vector size is" + vectorSize);
+            throw new IllegalArgumentException("The vector size must be > 0. Current vector size is " + vectorSize);
         }
 
         components = new double[vectorSize];
     }
 
     public Vector(Vector vector) {
-        components = vector.components;
+        components = Arrays.copyOf(vector.components, vector.components.length);
     }
 
     public Vector(double[] array) {
@@ -27,7 +27,7 @@ public class Vector {
 
     public Vector(int vectorSize, double[] array) {
         if (vectorSize <= 0) {
-            throw new IllegalArgumentException("The vector size must be > 0. Current vector size is" + vectorSize);
+            throw new IllegalArgumentException("The vector size must be > 0. Current vector size is " + vectorSize);
         }
 
         components = Arrays.copyOf(array, vectorSize);
@@ -37,14 +37,14 @@ public class Vector {
         return components.length;
     }
 
-    public void extend(Vector vector) {
+    private void extend(Vector vector) {
         if (components.length < vector.components.length) {
             components = Arrays.copyOf(components, vector.components.length);
         }
     }
 
-    public Vector getSum(Vector vector) {
-        this.extend(vector);
+    public Vector add(Vector vector) {
+        extend(vector);
 
         for (int i = 0; i < vector.components.length; i++) {
             components[i] += vector.components[i];
@@ -53,8 +53,8 @@ public class Vector {
         return this;
     }
 
-    public Vector getSubtraction(Vector vector) {
-        this.extend(vector);
+    public Vector subtract(Vector vector) {
+        extend(vector);
 
         for (int i = 0; i < vector.components.length; i++) {
             components[i] -= vector.components[i];
@@ -63,7 +63,7 @@ public class Vector {
         return this;
     }
 
-    public Vector getScalarMultiplyResult(double scalar) {
+    public Vector multiplyByScalar(double scalar) {
         for (int i = 0; i < components.length; i++) {
             components[i] *= scalar;
         }
@@ -72,16 +72,16 @@ public class Vector {
     }
 
     public Vector reverse() {
-        getScalarMultiplyResult(-1);
+        multiplyByScalar(-1);
 
         return this;
     }
 
-    public double getSum() {
+    public double getLength() {
         int sum = 0;
 
         for (double vectorComponent : components) {
-            sum += Math.pow(vectorComponent, 2);
+            sum += vectorComponent * vectorComponent;
         }
 
         return Math.sqrt(sum);
@@ -90,16 +90,16 @@ public class Vector {
     public static Vector getSum(Vector vector1, Vector vector2) {
         Vector vectorResult = new Vector(vector1);
 
-        return vectorResult.getSum(vector2);
+        return vectorResult.add(vector2);
     }
 
-    public static Vector getSubtraction(Vector vector1, Vector vector2) {
+    public static Vector getDifference(Vector vector1, Vector vector2) {
         Vector vectorResult = new Vector(vector1);
 
-        return vectorResult.getSubtraction(vector2);
+        return vectorResult.subtract(vector2);
     }
 
-    public static double getScalarMultiplyResult(Vector vector1, Vector vector2) {
+    public static double getScalarProduct(Vector vector1, Vector vector2) {
         double scalarProduct = 0;
         int minVectorSize = Math.min(vector1.components.length, vector2.components.length);
 
@@ -128,15 +128,14 @@ public class Vector {
     @Override
     public int hashCode() {
         return Arrays.hashCode(components);
-
     }
 
-    public double getComponent(int componentIndex) {
-        return components[componentIndex];
+    public double getComponent(int index) {
+        return components[index];
     }
 
-    public void setComponent(int settingComponentIndex, double component) {
-        components[settingComponentIndex] = component;
+    public void setComponent(int index, double component) {
+        components[index] = component;
     }
 
     @Override

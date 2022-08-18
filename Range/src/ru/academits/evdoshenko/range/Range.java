@@ -53,7 +53,6 @@ public class Range {
         return new Range[]{new Range(Math.min(from, range.from), Math.max(to, range.to))};
     }
 
-
     public Range[] getDifference(Range range) {
         if (from >= range.to || to <= range.from) {
             return new Range[]{new Range(from, to)};
@@ -72,7 +71,6 @@ public class Range {
         }
 
         return new Range[0];
-
     }
 
     @Override

@@ -68,7 +68,7 @@ public class Main {
             StringBuilder stringBuilder = new StringBuilder("[");
 
             for (Range range : ranges) {
-                stringBuilder.append(range.toString()).append(", ");
+                stringBuilder.append(range).append(", ");
             }
 
             stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length());
