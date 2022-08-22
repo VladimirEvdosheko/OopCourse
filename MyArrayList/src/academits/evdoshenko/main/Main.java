@@ -1,6 +1,6 @@
-package academits.evdoshenko.Main;
+package academits.evdoshenko.main;
 
-import academits.evdoshenko.ArrayList.MyArrayList;
+import academits.evdoshenko.arrayList.MyArrayList;
 
 import java.util.Arrays;
 import java.util.Iterator;

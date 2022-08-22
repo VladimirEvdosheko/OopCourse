@@ -1,4 +1,4 @@
-package academits.evdoshenko.ArrayList;
+package academits.evdoshenko.arrayList;
 
 import java.util.*;
 
