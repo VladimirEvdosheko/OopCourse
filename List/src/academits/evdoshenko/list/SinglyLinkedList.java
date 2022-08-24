@@ -1,5 +1,7 @@
 package academits.evdoshenko.list;
 
+import java.util.NoSuchElementException;
+
 public class SinglyLinkedList<T> {
     private ListItem<T> head;
     private int count;
@@ -62,6 +64,10 @@ public class SinglyLinkedList<T> {
     }
 
     public T getData(int index) {
+        if (index > count || index < 0) {
+            throw new IllegalArgumentException("The index is incorrect");
+        }
+
         return iterateToIndex(index).getData();
     }
 
@@ -81,6 +87,10 @@ public class SinglyLinkedList<T> {
 
     @SuppressWarnings("UnusedReturnValue")
     public T setData(int index, T data) {
+        if (index > count || index < 0) {
+            throw new IllegalArgumentException("The index is incorrect");
+        }
+
         ListItem<T> currentItem = iterateToIndex(index);
         T previousDataValue = currentItem.getData();
 
@@ -91,6 +101,10 @@ public class SinglyLinkedList<T> {
 
     @SuppressWarnings("UnusedReturnValue")
     public T removeItem(int index) {
+        if (index > count || index < 0) {
+            throw new IllegalArgumentException("The index is incorrect");
+        }
+
         if (index == 0) {
             T removedData = head.getData();
             head.setData(head.getNext().getData());
@@ -110,6 +124,10 @@ public class SinglyLinkedList<T> {
 
     @SuppressWarnings("UnusedReturnValue")
     public T removeHead() {
+        if (count == 0) {
+            throw new NoSuchElementException("The list is empty!");
+        }
+
         T removedData = head.getData();
 
         head = head.getNext();
@@ -119,6 +137,10 @@ public class SinglyLinkedList<T> {
     }
 
     public void reverse() {
+        if (count == 0) {
+            throw new NoSuchElementException("The list is empty!");
+        }
+
         ListItem<T> currentItem = head;
         ListItem<T> previousItem = null;
 
@@ -163,7 +185,9 @@ public class SinglyLinkedList<T> {
 
         while (currentItem.getNext() != null) {
             String str = String.format("%s, ", currentItem.getData());
+
             currentItem = currentItem.getNext();
+
             stringBuilder.append(str);
         }
 
