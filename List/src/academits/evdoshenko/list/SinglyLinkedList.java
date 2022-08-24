@@ -1,6 +1,7 @@
 package academits.evdoshenko.list;
 
 import java.util.NoSuchElementException;
+import java.util.Objects;
 
 public class SinglyLinkedList<T> {
     private ListItem<T> head;
@@ -43,7 +44,7 @@ public class SinglyLinkedList<T> {
 
         ListItem<T> previousItem = iterateToIndex(index - 1);
 
-        item.setNext(previousItem.getNext());
+        item.setNext(Objects.requireNonNull(previousItem).getNext());
         previousItem.setNext(item);
 
         count++;
@@ -68,10 +69,10 @@ public class SinglyLinkedList<T> {
             throw new IllegalArgumentException("The index is incorrect");
         }
 
-        return iterateToIndex(index).getData();
+        return Objects.requireNonNull(iterateToIndex(index)).getData();
     }
 
-    public ListItem<T> iterateToIndex(int index) {
+    private ListItem<T> iterateToIndex(int index) {
         int i = 0;
 
         for (ListItem<T> currentItem = head; currentItem != null; currentItem = currentItem.getNext()) {
@@ -92,7 +93,7 @@ public class SinglyLinkedList<T> {
         }
 
         ListItem<T> currentItem = iterateToIndex(index);
-        T previousDataValue = currentItem.getData();
+        T previousDataValue = Objects.requireNonNull(currentItem).getData();
 
         currentItem.setData(data);
 
@@ -117,7 +118,7 @@ public class SinglyLinkedList<T> {
         ListItem<T> currentItem = iterateToIndex(index);
         ListItem<T> previousItem = iterateToIndex(index - 1);
 
-        previousItem.setNext(currentItem.getNext());
+        Objects.requireNonNull(previousItem).setNext(Objects.requireNonNull(currentItem).getNext());
 
         return currentItem.getData();
     }
